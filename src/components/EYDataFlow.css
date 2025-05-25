@@ -1,0 +1,661 @@
+* {
+    margin: 100;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #111111;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 2rem 0;
+  }
+  
+  .hero-container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1.5rem;
+    position: relative;
+  }
+  
+  .header-box {
+    background: rgba(40, 40, 40, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-bottom: 5rem;
+    font-size: 0.9rem;
+    
+  }
+  
+  .flow-container {
+    margin: 1.5rem auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 450px;
+  }
+  
+  .flow-container .left-column,
+  .flow-container .center-column,
+  .flow-container .right-column {
+    transform: translateX(40px); /* adjust value as needed */
+  }
+  
+  .node-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: calc(100% - 500px);
+  }
+  
+  /* Path styling */
+  .flow-path {
+    position: absolute;
+    background: rgba(255,84,0,0.4);
+    z-index: 1;
+  }
+  
+  /* Horizontal path from EY Analyst to CIAP */
+  .path-horizontal-main {
+    height: 4px;
+    top: 50%;
+    left: 200px;
+    width: 80px;
+  }
+  
+  /* Horizontal paths from CIAP to right side */
+  .path-horizontal-to-soc {
+    height: 4px;
+    top: 14%;
+    left: 650px;
+    width: 80px;
+  }
+  
+  .path-horizontal-to-itsm {
+    height: 4px;
+    top: 50%;
+    left: 650px;
+    width: 80px;
+  }
+  
+  .path-horizontal-to-client {
+    height: 4px;
+    top: 85%;
+    left: 650px;
+    width: 80px;
+  }
+  
+  /* Vertical connector paths */
+  .path-vertical-connector {
+    width: 4px;
+    left: 650px;
+    height: 35.5%;
+    top: 14.5%;
+  } 
+  
+  .path-vertical-connector2 {
+    width: 4px;
+    left: 650px;
+    height: 35.5%;
+    bottom: 14.5%;
+  }
+  
+  .path-vertical-connector_SIEM {
+    width: 4px;
+    left: 530px;
+    height: 30%;
+    bottom: -6%;
+  }  
+  
+  .data-particle {
+    position: absolute;
+    width: 16px;
+    height: 6px;
+    background-color: #FF5400;
+    border-radius: 3px;
+    filter: drop-shadow(0 0 6px #FF5400);
+    z-index: 2;
+  }
+  
+  /* Main path particles */
+  .data-particle.main {
+    top: 50.5%;
+    transform: translateY(-50%);
+    animation: moveParticleRight 4s infinite linear;
+  }
+  
+  /* Right paths particles */
+  .data-particle.to-soc {
+    top: 14.5%;
+    left: 540px;
+    transform: translateY(-30%);
+    animation: moveParticleToRight 3s infinite linear;
+    animation-delay: 1s;
+  }
+  
+  .data-particle.to-itsm {
+    top: 50.5%;
+    left: 860px;
+    transform: translateY(-50%);
+    animation: moveParticleToRight 3s infinite linear;
+    animation-delay: 1.5s;
+  }
+  
+  .data-particle.to-client {
+    top: 85.5%;
+    left: 460px;
+    transform: translateY(-50%);
+    animation: moveParticleToRight 3s infinite linear;
+    animation-delay: 1.5s;
+  }
+  
+  .data-particle.to-SIEM {
+    top: 85.5%;
+    left: 365px;
+    transform: translateY(50%) rotate(90deg);
+    animation: moveParticleUp 3s infinite linear;
+    animation-delay: 2s;
+  }
+  
+  @keyframes moveParticleRight {
+    0% {
+      left: 10%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      left: 300px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes moveParticleToRight {
+    0% {
+      left: 490px;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      left: 540px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes moveParticleUp {
+    0% {
+      top: 85.5%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 70%; /* or wherever you want it to move to */
+      opacity: 0;
+    }
+  }
+  
+  .flow-node {
+    position: relative;
+    z-index: 4;
+    background: rgba(40, 40, 40, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .left-column .flow-node{
+    width: 200px;
+    margin-left: 70px;
+    height: 200px; /* matches width, so it's a square */
+  }
+  
+  .center-column .flow-node {
+    width: 220px;
+    margin-left: 5px;
+    margin-right: 20px;
+    height: 235px; /* matches width, so it's a square */
+  }
+  
+  .right-column .flow-node {
+    width: 320px;   /* slightly wider */
+    height: 140px;  /* less tall = rectangle */
+    margin-left: 70px;
+    margin-right: 10px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  .right-column .flow-node:first-child {
+    margin-left: 220px; /* or whatever value you want */
+  }
+  
+  .right-column .flow-node:nth-child(2) {
+    margin-left: 220px; /* or whatever value you want */
+  }
+   .right-column .flow-node:nth-child(3) {
+    margin-left: 220px; /* or whatever value you want */
+  }
+  
+  .flow-node.central {
+    background: rgba(50, 50, 50, 0.7);
+    border: 2px solid rgba(255, 84, 0, 0.3);
+  }
+  
+  .flow-node:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 84, 0, 0.5);
+  }
+  
+  .flow-node.central:hover {
+    border: 2px solid rgba(255, 84, 0, 0.8);
+  }
+  
+  .flow-node:hover .node-icon {
+    filter: drop-shadow(0 0 12px #FF5400);
+  }
+  
+  .node-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.2rem;
+    transition: all 0.4s ease;
+  }
+  
+  .right-column .node-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+  
+  .node-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .right-column .node-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  .right-column .node-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 75px);
+  }
+  
+  .flow-node:hover .node-title {
+    color: #FF5400;
+  }
+  
+  .node-description {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+  }
+  
+  .glow-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, rgba(255, 84, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 16px;
+    z-index: -1;
+  }
+  
+  .flow-node:hover .glow-effect {
+    opacity: 1;
+  }
+  
+  .pulse-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 84, 0, 0.3);
+    width: 24px;
+    height: 24px;
+    animation: pulse 3s infinite;
+  }
+  
+  .pulse-circle.main {
+    left: 360px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .pulse-circle.to-soc {
+    left: 570px;
+    top: 14%;
+    transform: translate(-50%, -50%);
+    animation-delay: 1s;
+  }
+  
+  .pulse-circle.to-itsm {
+    left: 570px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 1.5s;
+  }
+  
+  .pulse-circle.to-client {
+    left: 570px;
+    top: 77%;
+    transform: translate(-50%, -50%);
+    animation-delay: 2s;
+  }
+  
+  .pulse-circle.to-SIEM {
+    left: 570px;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    animation-delay: 2s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .node-hover-info {
+    position: absolute;
+    width: 180px;
+    background: rgba(25, 25, 25, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 84, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    top: -70px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(10px);
+    z-index: 10;
+  }
+  
+  .flow-node:hover .node-hover-info {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .highlight-effect {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FF5400, transparent);
+    border-radius: 2px;
+  }
+  
+  /* Connection arrow indicators */
+  .connection-arrow {
+    position: absolute;
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .connection-arrow.main {
+    left: 343px;
+    top: 50.5%;
+    transform: translateY(-50%);
+  }
+  
+  .connection-arrow.to-soc {
+    left: 710px;
+    top: 14.5%;
+    transform: translateY(-50%);
+  }
+  
+  .connection-arrow.to-itsm {
+    left: 710px;
+    top: 50.5%;
+    transform: translateY(-50%);
+  }
+  
+  .connection-arrow.to-client {
+    left: 710px;
+    top: 85.5%;
+    transform: translateY(-50%);
+  }
+  
+  .connection-arrow.to-SIEM {
+    left: 516.5px;
+    top: 78%;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  
+  /* Flow Chart Labels */
+  .flow-label {
+    position: absolute;
+    background: rgba(25, 25, 25, 0.8);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #FF5400;
+    z-index: 6;
+  }
+  
+  .flow-label.label-1 {
+    left: 260px;
+    top: 30%;
+    transform: translateX(-50%);
+  }
+  
+  .flow-label.label-2 {
+    left: 500px;
+    top: 10%;
+    transform: translateX(-50%);
+  }
+  
+  .flow-label.label-3 {
+    left: 500px;
+    top: 35%;
+    transform: translateX(-50%);
+  }
+  
+  .flow-label.label-4 {
+    left: 500px;
+    top: 60%;
+    transform: translateX(-50%);
+  }
+  
+  /* SIEM Engineering Section */
+  .engineering-section {
+    width: 80%;
+    background: rgba(40, 40, 40, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    transform: translateX(110px); /* Adjust this value as needed */
+  }
+  
+  .engineering-section:hover {
+    border: 1px solid rgba(255, 84, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  .siem-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-weight: bold;
+    background: rgba(50, 50, 50, 0.7);
+    border-radius: 16px 0 0 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .engineering-section:hover .siem-label {
+    background: rgba(255, 84, 0, 0.2);
+    color: #FF5400;
+  }
+  
+  .engineering-header {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .engineering-boxes {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 40px;
+    gap: 15px;
+  }
+  
+  .engineering-box {
+    background: rgba(50, 50, 50, 0.7);
+    padding: 15px;
+    border-radius: 16px;
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .engineering-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 84, 0, 0.5);
+    color: #FF5400;
+  }
+  
+  /* Data Sources Section */
+  .data-sources-section {
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    margin: 2rem 0 0 0;
+    padding: 1.2rem 1rem 1.2rem 1rem;
+    box-shadow: 0 0 24px 0 rgba(255, 255, 255, 0.04);
+    text-align: center;
+  }
+  
+  .data-sources-title {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .data-sources-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .data-source-item {
+    background: #f2c200;
+    color: #232323;
+    font-weight: 600;
+    border-radius: 16px;
+    padding: 0.6rem 1.2rem;
+    min-width: 120px;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 0.3rem;
+  }
+  
+  .center-column .flow-node.central {
+    position: relative;
+    left: 100px; /* Adjust this value as needed */
+  }
+  
+  .ey-flow-border-box {
+    border: 2px solid rgba(255, 84, 0, 0.5);
+    border-radius: 32px;
+    background: rgba(30, 30, 30, 0.7);
+    box-shadow: 0 0 32px 0 rgba(255, 84, 0, 0.08);
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin: 0 auto;
+    width: 90vw;
+    max-width: 1200px;
+    
+    /* width: 100%; */
+    
+    
+    position: relative;
+    z-index: 0;
+  }
