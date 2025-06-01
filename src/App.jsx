@@ -5,6 +5,7 @@ import EyDataFlow from "./components/EYDataFlow";
 import EYDeliveryModels from './components/EYDeliveryModels';
 
 import ImageSlider from "./components/ImageSlider";
+import LogoSlider from './components/LogoSlider';
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                 <EyDataFlow />
                 <EYDeliveryModels />
                 <ImageSlider />
+                <LogoSlider />
                 <Footer />
               </>
             }
