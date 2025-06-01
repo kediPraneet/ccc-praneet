@@ -1,0 +1,293 @@
+/* 3D Cube Animation Styles */
+.cube-wrapper {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    perspective: 1000px;
+  }
+  
+  .cube-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+  }
+  
+  .cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+  }
+  
+  .face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ff5722;
+    background: rgba(255, 87, 34, 0.1);
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+  }
+  
+  .front { 
+    transform: rotateY(0deg) translateZ(100px); 
+  }
+  
+  .back { 
+    transform: rotateY(180deg) translateZ(100px); 
+  }
+  
+  .right { 
+    transform: rotateY(90deg) translateZ(100px); 
+  }
+  
+  .left { 
+    transform: rotateY(-90deg) translateZ(100px); 
+  }
+  
+  .top { 
+    transform: rotateX(90deg) translateZ(100px); 
+  }
+  
+  .bottom { 
+    transform: rotateX(-90deg) translateZ(100px); 
+  }
+  
+  @keyframes rotate {
+    0% { 
+      transform: rotateX(0deg) rotateY(0deg); 
+    }
+    100% { 
+      transform: rotateX(360deg) rotateY(360deg); 
+    }
+  }
+  
+  /* Grid Pattern Overlay */
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* SIEM Block Styles */
+  .siem-block {
+    background: linear-gradient(to right, #9333ea, #2563eb);
+    border: 2px solid #a855f7;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    max-width: 24rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .siem-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    border: 2px solid #d8b4fe;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    opacity: 0.5;
+  }
+  
+  /* CIAP Core Styles */
+  .ciap-core {
+    background: linear-gradient(135deg, #ea580c, #eab308, #ea580c);
+    border-radius: 50%;
+    width: 14rem;
+    height: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 4px solid #fb923c;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .neural-network-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+  }
+  
+  .rotating-ring-1 {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #fed7aa;
+    animation: spin 10s linear infinite;
+    opacity: 0.4;
+  }
+  
+  .rotating-ring-2 {
+    position: absolute;
+    inset: 1rem;
+    border-radius: 50%;
+    border: 1px solid #fef3c7;
+    animation: spin 15s linear infinite reverse;
+    opacity: 0.6;
+  }
+  
+  /* Animated SVG Paths */
+  .animated-path-1 {
+    animation: dash 2s linear infinite;
+  }
+  
+  .animated-path-2 {
+    animation: dash 2.2s linear infinite;
+  }
+  
+  .animated-path-3 {
+    animation: dash 1.8s linear infinite;
+  }
+  
+  .animated-path-4 {
+    animation: dash 2.4s linear infinite;
+  }
+  
+  .animated-path-5 {
+    animation: dash 1.6s linear infinite;
+  }
+  
+  .animated-path-6 {
+    animation: dash 2.6s linear infinite;
+  }
+  
+  .animated-path-7 {
+    animation: dash 2.8s linear infinite;
+  }
+  
+  .animated-path-8 {
+    animation: dash 1.4s linear infinite;
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -10;
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .cube-wrapper {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .cube-container {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .cube {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .face {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .front { 
+      transform: rotateY(0deg) translateZ(75px); 
+    }
+    
+    .back { 
+      transform: rotateY(180deg) translateZ(75px); 
+    }
+    
+    .right { 
+      transform: rotateY(90deg) translateZ(75px); 
+    }
+    
+    .left { 
+      transform: rotateY(-90deg) translateZ(75px); 
+    }
+    
+    .top { 
+      transform: rotateX(90deg) translateZ(75px); 
+    }
+    
+    .bottom { 
+      transform: rotateX(-90deg) translateZ(75px); 
+    }
+    
+    .ciap-core {
+      width: 10rem;
+      height: 10rem;
+    }
+    
+    .siem-block {
+      padding: 1rem;
+      max-width: 20rem;
+    }
+  }
+  
+  /* Additional utility classes for better visual effects */
+  .transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  /* Custom gradients */
+  .bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+  
+  .bg-gradient-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  }
+  
+  .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+  
+  /* Enhanced hover effects */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.5);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  
+  /* Smooth animations for better UX */
+  * {
+    box-sizing: border-box;
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }

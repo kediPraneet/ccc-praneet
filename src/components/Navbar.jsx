@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { navItems } from "../constants";
 
@@ -8,6 +9,12 @@ const Navbar = () => {
 
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
+  };
+
+  const handleNavClick = (href) => {
+    if (href === "http://localhost:5174") {
+      window.location.href = href;
+    }
   };
 
   return (
@@ -21,7 +28,19 @@ const Navbar = () => {
           <ul className="hidden lg:flex ml-14 space-x-12">
             {navItems.map((item, index) => (
               <li key={index}>
-                <a href={item.href}>{item.label}</a>
+                {item.href === "http://localhost:5174" ? (
+                  <a 
+                    href={item.href} 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link to={item.href}>{item.label}</Link>
+                )}
               </li>
             ))}
           </ul>
@@ -47,7 +66,19 @@ const Navbar = () => {
             <ul>
               {navItems.map((item, index) => (
                 <li key={index} className="py-4">
-                  <a href={item.href}>{item.label}</a>
+                  {item.href === "http://localhost:5174" ? (
+                    <a 
+                      href={item.href} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.href);
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.href}>{item.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>

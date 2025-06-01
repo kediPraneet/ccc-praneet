@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import EyDataFlow from "./components/EYDataFlow";
+import EYDeliveryModels from './components/EYDeliveryModels';
+
 import ImageSlider from "./components/ImageSlider";
 import Footer from "./components/Footer";
 
@@ -17,6 +19,7 @@ const App = () => {
               <>
                 <HeroSection />
                 <EyDataFlow />
+                <EYDeliveryModels />
                 <ImageSlider />
                 <Footer />
               </>

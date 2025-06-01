@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import './EYDataFlow.css';
 import F1 from "./F1"; // adjust path if needed
+import F2 from "./F2"; // adjust path if needed
+import F3 from "./F3"; // adjust path if needed
 
 const EYDataFlow = () => {
   const horizontalOffset = 40;
   const [showFlowchart, setShowFlowchart] = useState(false);
+  const [showF2, setShowF2] = useState(false);
+  const [showF3, setShowF3] = useState(false);
 
   return (
     <div className="hero-container">
@@ -163,16 +167,22 @@ const EYDataFlow = () => {
           <div className="siem-label">SIEM</div>
           <div className="engineering-header">Engineering / Transition / Project Management / Data Scientists</div>
           <div className="engineering-boxes">
-            <div className="engineering-box">
-              <div className="glow-effect"></div>
+            <div
+              className="engineering-box"
+              onClick={() => setShowF2(true)}
+              style={{ cursor: "pointer" }}
+            >
               Architecture & Design
             </div>
             <div className="engineering-box">
               <div className="glow-effect"></div>
               Implementation
             </div>
-            <div className="engineering-box">
-              <div className="glow-effect"></div>
+            <div
+              className="engineering-box"
+              onClick={() => setShowF3(true)}
+              style={{ cursor: "pointer" }}
+            >
               Usecase Management
             </div>
           </div>
@@ -200,6 +210,11 @@ const EYDataFlow = () => {
 
       {/* Conditionally render the flowchart */}
       {showFlowchart && <F1 onClose={() => setShowFlowchart(false)} />}
+
+      {/* Show the modal when showF2 is true */}
+      {showF2 && <F2 onClose={() => setShowF2(false)} />}
+
+      {showF3 && <F3 onClose={() => setShowF3(false)} />}
     </div>
   );
 };

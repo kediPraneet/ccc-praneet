@@ -9,7 +9,7 @@ export const navItems = [
   { label: "Home", href: "#" },
   { label: "Incident Response", href: "https://virtualr-main-30d5ec33i-kp0702s-projects.vercel.app/" },
   { label: "SOC Workflow", href: "#flowchart" },
-  { label: "TTX", href: "#" },
+  { label: "IR TTX", href: "http://localhost:5174" },
 ];
 
 export const features = [

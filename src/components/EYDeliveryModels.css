@@ -1,0 +1,63 @@
+.ey-delivery-section {
+  margin: 3rem auto 2rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.ey-delivery-title {
+  color: #fff !important;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2.2rem;
+  letter-spacing: -1px;
+}
+
+.ey-delivery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ey-delivery-item {
+  display: grid;
+  grid-template-columns: 340px 1fr; /* Adjust 340px as needed for your design */
+  align-items: start;
+  font-size: 1.25rem;
+  margin-bottom: 1.3rem;
+  color: #888;
+  font-weight: 400;
+  line-height: 1.5;
+  background: none;
+  gap: 1.2rem;
+}
+
+.ey-delivery-left {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.ey-arrow {
+  color: #ff7300;
+  font-size: 1.4em;
+  margin-right: 0.5em;
+  margin-top: 0.1em;
+  flex-shrink: 0;
+}
+
+.ey-label {
+  color: #ff7300;
+  font-weight: 700;
+  font-size: 1em;
+  font-family: inherit;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.ey-desc {
+  color: #888;
+  font-weight: 400;
+  font-size: 1em;
+  word-break: break-word;
+}
