@@ -87,35 +87,35 @@
   .path-horizontal-to-soc {
     height: 4px;
     top: 14%;
-    left: 650px;
+    left: 680px;
     width: 80px;
   }
   
   .path-horizontal-to-itsm {
     height: 4px;
     top: 50%;
-    left: 650px;
-    width: 80px;
+    left: 635px;
+    width: 110px;
   }
   
   .path-horizontal-to-client {
     height: 4px;
     top: 85%;
-    left: 650px;
+    left: 680px;
     width: 80px;
   }
   
   /* Vertical connector paths */
   .path-vertical-connector {
     width: 4px;
-    left: 650px;
+    left: 680px;
     height: 35.5%;
     top: 14.5%;
   } 
   
   .path-vertical-connector2 {
     width: 4px;
-    left: 650px;
+    left: 680px;
     height: 35.5%;
     bottom: 14.5%;
   }
@@ -466,19 +466,19 @@
   }
   
   .connection-arrow.to-soc {
-    left: 710px;
+    left: 740px;
     top: 14.5%;
     transform: translateY(-50%);
   }
   
   .connection-arrow.to-itsm {
-    left: 710px;
+    left: 740px;
     top: 50.5%;
     transform: translateY(-50%);
   }
   
   .connection-arrow.to-client {
-    left: 710px;
+    left: 740px;
     top: 85.5%;
     transform: translateY(-50%);
   }
@@ -486,6 +486,11 @@
   .connection-arrow.to-SIEM {
     left: 516.5px;
     top: 78%;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  .connection-arrow.to-Source {
+    left: 516.5px;
+    top: 128%;
     transform: translateY(-50%) rotate(-90deg);
   }
   
@@ -638,6 +643,7 @@ background: rgba(40, 40, 40, 0.9);
     margin-bottom: 0.08rem !important;
     text-align: center !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    ;
   }
   
   .center-column .flow-node.central {
@@ -660,4 +666,80 @@ background: rgba(40, 40, 40, 0.9);
     
     position: relative;
     z-index: 0;
+  }
+
+  /* Video Player Modal Styles */
+  .video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .video-container {
+    background: #1a1a1a;
+    border-radius: 12px;
+    max-width: 95vw;
+    max-height: 90vh;
+    width: 1400px;
+    height: 800px;
+    position: relative;
+    border: 1px solid #333;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .video-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+
+  .video-close-btn:hover {
+    background: #ff6666;
+  }
+
+  /* Video fills entire container with no controls */
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  /* Hide any video controls that might appear */
+  .video-container video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .video-container video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+
+  .video-container video::-webkit-media-controls-play-button {
+    display: none !important;
+  }
+
+  .video-container video::-webkit-media-controls-start-playback-button {
+    display: none !important;
   }

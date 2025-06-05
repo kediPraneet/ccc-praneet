@@ -8,7 +8,7 @@
   
   .slider-track {
     display: flex;
-    animation: scroll 5s linear infinite;
+    animation: scroll 15s linear infinite;
     width: fit-content;
   }
   

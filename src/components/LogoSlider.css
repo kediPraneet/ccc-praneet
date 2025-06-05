@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  animation: logo-scroll 30s linear infinite reverse; /* reverse for opposite direction */
+  animation: logo-scroll 15s linear infinite reverse; /* reverse for opposite direction */
   will-change: transform;
 }
 
@@ -44,4 +44,8 @@
   100% {
     transform: translateX(-50%);
   }
+}
+
+.slider-image {
+  background: #111;
 }

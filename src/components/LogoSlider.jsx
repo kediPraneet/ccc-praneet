@@ -9,8 +9,8 @@ const logos = [
   "mahi.jpg",
   "nike.png",
   "nokiaa.jpg",
-  "sbi .png",
-  "tata .png"
+  "sbi.png",
+  "tata.png"
 ];
 
 const LogoSlider = () => (

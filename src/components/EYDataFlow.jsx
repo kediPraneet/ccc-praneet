@@ -9,6 +9,7 @@ const EYDataFlow = () => {
   const [showFlowchart, setShowFlowchart] = useState(false);
   const [showF2, setShowF2] = useState(false);
   const [showF3, setShowF3] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
     <div className="hero-container">
@@ -62,6 +63,10 @@ const EYDataFlow = () => {
             <path d="M5 12H19" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M13 6L19 12L13 18" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
+          <svg className="connection-arrow to-Source" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M13 6L19 12L13 18" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
           
           {/* Left column - EY Analyst */}
           <div className="left-column node-column">
@@ -88,7 +93,12 @@ const EYDataFlow = () => {
           
           {/* Center column - CIAP */}
           <div className="center-column">
-            <div className="flow-node central">
+            <div
+              className="flow-node central"
+              onClick={() => setShowVideo(true)}
+              style={{ cursor: "pointer" }}
+              title="Click to view CIAP video"
+            >
               <div className="glow-effect"></div>
               <svg className="node-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="3" y="6" width="18" height="12" rx="2" stroke="#FF5400" strokeWidth="1.5"/>
@@ -215,6 +225,39 @@ const EYDataFlow = () => {
       {showF2 && <F2 onClose={() => setShowF2(false)} />}
 
       {showF3 && <F3 onClose={() => setShowF3(false)} />}
+
+      {/* Video Player Modal */}
+      {showVideo && (
+        <div className="video-overlay">
+          <div className="video-container">
+            <button 
+              className="video-close-btn"
+              onClick={() => setShowVideo(false)}
+            >
+              ×
+            </button>
+            <video
+              width="100%"
+              height="100%"
+              autoPlay
+              muted
+              playsInline
+              onEnded={(e) => {
+                // Keep the video at its final frame when it ends
+                e.target.currentTime = e.target.duration;
+              }}
+              style={{ 
+                borderRadius: "12px",
+                objectFit: "cover",
+                background: "#1a1a1a"
+              }}
+            >
+              <source src="/image/vid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
